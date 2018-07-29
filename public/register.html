@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kural Register</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <form action="/" method="post" class="container col-md-5">
+        <div class="form-row">
+            <div class="heading center">Register to Kural</div>
+        </div>
+        <div class="form-group">
+            <label for="userid">Identification Number</label>
+            <input type="number" id="userid" class="form-control" placeholder="Identification Number">
+        </div>
+        <!-- <label for="door">Address</label> -->
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="door">Door</label>
+                <input type="number" id="door" class="form-control" placeholder="Door">
+            </div>
+            <div class="form-group col-md-10">
+                <label for="street">Street</label>
+                <input type="text" id="street" class="form-control" placeholder="Street">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label for="area">Area</label>
+                <input type="text" id="area" class="form-control" placeholder="Area">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" class="form-control" placeholder="Pincode">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="state">State</label>
+                <select id="state" class="form-control">
+                    <option selected>Choose State..</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="city">City</label>
+                <select id="city" class="form-control">
+                    <option selected>Choose City..</option>
+                    <option>...</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" id="password1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control" id="password2" placeholder="Confirm Password">
+        </div>
+        <div class="form-row center">
+            <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+            <button type="reset" class="btn btn-danger col-md-2">Reset</button>
+        </div>
+    </form>
+</body>
+</html>

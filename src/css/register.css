@@ -1,0 +1,18 @@
+body {
+    background: #eee;
+}
+.container {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.heading {
+    font-size: 1.4em;
+}
+.center {
+    margin: auto;
+    justify-content: center;
+}
+button {
+    margin-right: 1vw;
+}

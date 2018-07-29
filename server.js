@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 
 const kural = express();
 
+kural.use(express.static('src'));
+kural.use(express.static('vendor'));
+
 //Connecting to MongoDB
 const { mongoURI } = require('./config/keys');
 mongoose.connect(mongoURI, { useNewUrlParser: true })
