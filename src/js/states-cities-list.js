@@ -1,4 +1,4 @@
-{
+const statesCities = {
   "Andaman and Nicobar Islands": [
     "Port Blair*"
   ],
