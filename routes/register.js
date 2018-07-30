@@ -28,7 +28,7 @@ router.post('', (req, res) => {
         });
     });
 
-    res.send("POSTED Register page");
+    res.send(req.body);
 });
 
 module.exports = router;
