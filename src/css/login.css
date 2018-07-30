@@ -7,15 +7,15 @@ body {
     background: #eee;
 }
 .container {
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 22vh;
+    height: 50vh;
+    padding: 15px 40px 10px 40px;
     background: rgba(245, 245, 245, 0.4);
-    border-radius: 20px;
+    border-radius: 6%;
 }
 .heading {
-    margin: auto;
     font-size: 1.4em;
+    margin: auto;
     margin-bottom: 10px;
 }
 .center {
