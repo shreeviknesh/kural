@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 
-const bodyParser = require('body-parser');
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: false}));
+const User = require('../models/user.js');
 
 const path = require('path');
 router.get('/', (req, res) => {
@@ -19,16 +16,19 @@ router.post('', (req, res) => {
     const pincode = req.body.pincode;
     const state = req.body.state;
     const city = req.body.city;
-    let password1 = req.body.password1;
-    let password2 = req.body.password2;
+    const password = req.body.password1;
 
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(password1, salt, function(err, hash) {
-
-        });
+    const newUser = new User({
+        userID: userid,
+        address: '#' + door + ', ' + street + ', ' + area + '. ' + city + '-' + pincode + '. ' + state + '.',
+        password: password
     });
 
-    res.send(req.body);
+    User.createUser(newUser, (err, user) => {
+        if(err) throw err;
+        console.log(user);
+    });
+    res.send('registered successfully');
 });
 
 module.exports = router;

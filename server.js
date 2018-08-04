@@ -6,11 +6,16 @@ const kural = express();
 kural.use(express.static('src'));
 kural.use(express.static('vendor'));
 
+const bodyParser = require('body-parser');
+kural.use(bodyParser.json());
+kural.use(bodyParser.urlencoded({extended: false}));
+
 //Connecting to MongoDB
 const { mongoURI } = require('./config/keys');
 mongoose.connect(mongoURI, { useNewUrlParser: true })
     .then( () => console.log("MongoDB connected"))
     .catch( err => console.log(err));
+const db = mongoose.connection;
 
 //Defining the Routes
 const loginRoute = require('./routes/login');
