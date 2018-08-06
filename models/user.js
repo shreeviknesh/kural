@@ -7,6 +7,10 @@ const UserSchema = new Schema({
         type: Number,
         index: true
     },
+    email: {
+        type: String,
+        index: true
+    },
     address: {
         type: String
     },

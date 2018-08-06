@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 
 router.post('', (req, res) => {
     const userid = req.body.userid;
+    const email = req.body.email;
     const door = req.body.door;
     const street = req.body.street;
     const area = req.body.area;
@@ -20,6 +21,7 @@ router.post('', (req, res) => {
 
     const newUser = new User({
         userID: userid,
+        email: email,
         address: '#' + door + ', ' + street + ', ' + area + '. ' + city + '-' + pincode + '. ' + state + '.',
         password: password
     });
