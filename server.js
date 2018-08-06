@@ -6,6 +6,7 @@ const kural = express();
 kural.use(express.static('src'));
 kural.use(express.static('vendor'));
 
+//Body Parser Middleware
 const bodyParser = require('body-parser');
 kural.use(bodyParser.json());
 kural.use(bodyParser.urlencoded({extended: false}));

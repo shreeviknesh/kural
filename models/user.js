@@ -26,3 +26,10 @@ module.exports.createUser = (newUser, callback) => {
     });
 }
 
+module.exports.findUser = (userid, callback) => {
+    User.findOne({userID: userid}, callback);
+}
+
+module.exports.comparePassword = (password, hash, callback) => {
+    bcrypt.compare(password, hash, callback);
+}
