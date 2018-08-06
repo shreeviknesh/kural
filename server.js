@@ -3,8 +3,16 @@ const mongoose = require('mongoose');
 
 const kural = express();
 
+//Static Folders
 kural.use(express.static('src'));
 kural.use(express.static('vendor'));
+
+//Templating Engine
+const exphbs = require('express-handlebars');
+
+kural.set('views', __dirname + '\\views');
+kural.engine('hbs', exphbs({defaultLayout: 'layout', extname: '.hbs'}));
+kural.set('view engine', 'hbs');
 
 //Body Parser Middleware
 const bodyParser = require('body-parser');

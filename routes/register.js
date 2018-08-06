@@ -5,7 +5,7 @@ const User = require('../models/user.js');
 
 const path = require('path');
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('./public/register.html'), {root: ''});
+    res.render('register', {layout: false});
 });
 
 router.post('', (req, res) => {
