@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/">Kural</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link {{#if loginActive}} active {{/if}}" href="/login">Login <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link {{#if registerActive}} active {{/if}}" href="/register">Register</a>
+    </div>
+  </div>
+</nav>

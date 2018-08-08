@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('login', {layout: false});
+    res.render('login', {
+        title: 'Login to Kural',
+        loginActive: true //means that the login page is active (not register page)
+    });
 });
 
 const User = require('../models/user');

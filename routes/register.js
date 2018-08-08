@@ -5,7 +5,10 @@ const User = require('../models/user.js');
 
 const path = require('path');
 router.get('/', (req, res) => {
-    res.render('register', {layout: false});
+    res.render('register', {
+        title: 'Register to Kural',
+        registerActive: true //means that the register page is active (not the login page)
+    });
 });
 
 router.post('', (req, res) => {

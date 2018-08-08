@@ -8,10 +8,15 @@ kural.use(express.static('src'));
 kural.use(express.static('vendor'));
 
 //Templating Engine
-const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars').create({
+	extname: '.hbs',
+	defaultLayout: 'layout.hbs',
+	partialsDir: 'views/partials',
+	layoutsDir: 'views/layouts/'
+});
 
 kural.set('views', __dirname + '\\views');
-kural.engine('hbs', exphbs({defaultLayout: 'layout', extname: '.hbs'}));
+kural.engine('hbs', exphbs.engine);
 kural.set('view engine', 'hbs');
 
 //Body Parser Middleware
@@ -27,6 +32,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true })
 const db = mongoose.connection;
 
 //Defining the Routes
+kural.get('/', (req, res) => {
+	res.render('main', {
+		title: 'Welcome to Kural'
+	});
+});
+
 const loginRoute = require('./routes/login');
 kural.use('/login', loginRoute);
 
