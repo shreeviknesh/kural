@@ -20,7 +20,7 @@ body {
 	padding-right: 2em;
 }
 .navbar {
-	height: 7vh;
+	height: 3em;
 	background-color: var(--blendColor);
 }
 .container {
