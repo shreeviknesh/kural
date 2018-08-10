@@ -3,7 +3,6 @@ const router = express.Router();
 
 const User = require('../models/user.js');
 
-const path = require('path');
 router.get('/', (req, res) => {
     res.render('register', {
         title: 'Register to Kural',
