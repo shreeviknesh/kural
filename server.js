@@ -32,15 +32,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true })
 const db = mongoose.connection;
 
 //Defining the Routes
-kural.get('/', (req, res) => {
-	res.render('main', {
-		title: 'Welcome to Kural',
-		navLinks: {
-			'Login': false,
-			'Register': false
-		}
-	});
-});
+const indexRoute = require('./routes/index.js');
+kural.use('/', indexRoute);
 
 const loginRoute = require('./routes/login');
 kural.use('/login', loginRoute);

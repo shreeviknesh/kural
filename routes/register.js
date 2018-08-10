@@ -8,8 +8,58 @@ router.get('/', (req, res) => {
     res.render('register', {
         title: 'Register to Kural',
         navLinks: {
-            'Login': false,
-            'Register': true
+            'Login': {
+                'current': false,
+                'url': "login"
+            },
+            'Public': {
+                'current': false,
+                'url': "register/public"
+            },
+            'Government': {
+                'current': false,
+                'url': "register/government"
+            }
+        }
+    });
+});
+
+router.get('/public', (req, res) => {
+    res.render('register/public', {
+        title: 'Public Registration',
+        navLinks: {
+            'Login': {
+                'current': false,
+                'url': "login"
+            },
+            'Public': {
+                'current': true,
+                'url': "register/public"
+            },
+            'Government': {
+                'current': false,
+                'url': "register/government"
+            }
+        }
+    });
+});
+
+router.get('/government', (req, res) => {
+    res.render('register/government', {
+        title: 'Government Registration',
+        navLinks: {
+        'Login': {
+            'current': false,
+            'url': "login"
+            },
+            'Public': {
+                'current': false,
+                'url': "register/public"
+            },
+            'Government': {
+                'current': true,
+                'url': "register/government"
+                }
         }
     });
 });
@@ -36,7 +86,7 @@ router.post('', (req, res) => {
         if(err) throw err;
         console.log(user);
     });
-    res.send('registered successfully');
+    res.send('Registered Successfully');
 });
 
 module.exports = router;

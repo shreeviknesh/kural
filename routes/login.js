@@ -5,8 +5,14 @@ router.get('/', (req, res) => {
     res.render('login', {
         title: 'Login to Kural',
         navLinks: {
-            'Login': true,
-            'Register': false
+            'Login': {
+                'current': true,
+                'url': 'login'
+            },
+            'Register': {
+                'current': false,
+                'url': 'register'
+            }
         }
     });
 });
@@ -25,10 +31,42 @@ router.post('', (req, res) => {
                 if(err)
                     throw err;
 
-                res.send(isMatch);
+                if(!isMatch) {
+                    res.render('login', {
+                        invalidAuthenticate: true,
+                        errorMsg: 'Incorrect Password',
+                        title: 'Login to Kural',
+                        navLinks: {
+                            'Login': {
+                                'current': true,
+                                'url': 'login'
+                            },
+                            'Register': {
+                                'current': false,
+                                'url': 'register'
+                            }
+                        }
+                    });
+                } else {
+                    res.send('Logged In');
+                }
             })
         } else {
-            res.send('User not found');
+            res.render('login', {
+                invalidAuthenticate: true,
+                errorMsg: 'Incorrect Username',
+                title: 'Login to Kural',
+                navLinks: {
+                    'Login': {
+                        'current': true,
+                        'url': 'login'
+                    },
+                    'Register': {
+                        'current': false,
+                        'url': 'register'
+                    }
+                }
+            });
         }
     })
 });

@@ -1,0 +1,68 @@
+<div  class="container">
+    <div class="page-title text-center">Public Registration</div>
+    <hr/>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="userid">Identification Number</label>
+            <input type="number" id="userid" name="userid" class="form-control" placeholder="Identification Number" autofocus>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email Address">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
+        </div>
+            <label for="door">Address</label>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <!-- <label for="door">Door</label> -->
+                <input type="number" id="door" name="door" class="form-control" placeholder="Door">
+            </div>
+            <div class="form-group col-md-9">
+                <!-- <label for="street">Street</label> -->
+                <input type="text" id="street" name="street" class="form-control" placeholder="Street">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <!-- <label for="area">Area</label> -->
+                <input type="text" id="area" name="area" class="form-control" placeholder="Area">
+            </div>
+            <div class="form-group col-md-5">
+                <!-- <label for="pincode">Pincode</label> -->
+                <input type="number" id="pincode" name="pincode" class="form-control" placeholder="Pincode">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <!-- <label for="state">State</label> -->
+                <select id="state" name="state" class="form-control" onchange="fillCities();">
+                    <option selected value="default">Choose State..</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <!-- <label for="city">City</label> -->
+                <select id="city" name="city" class="form-control" disabled>
+                    <option selected value="default">Choose City..</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" name="password1" class="form-control" id="password1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password">
+        </div>
+        <div class="form-group alert alert-danger" id="errorMsg" style="display: none;">
+            <span>These fields cannot be empty.</span>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-outline-primary" onclick="return validate();" >Submit</button>
+            <button type="reset" class="btn btn-outline-danger">Reset</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/states-cities-list.js"></script>
+<script src="/js/states-cities.js"></script>

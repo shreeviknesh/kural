@@ -6,7 +6,9 @@
   <div class="collapse navbar-collapse" id="navbar">
     <div class="navbar-nav ml-auto">
       {{#each navLinks}}
-        <a class="nav-item nav-link {{#if this}} active {{/if}}" href="/{{@key}}">{{@key}}</a>
+        <a class="nav-item nav-link {{#if this.[current]}} active {{/if}}" href="/{{this.[url]}}">
+          {{@key}}
+        </a>
       {{/each}}
     </div>
   </div>
