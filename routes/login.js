@@ -4,7 +4,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.render('login', {
         title: 'Login to Kural',
-        loginActive: true //means that the login page is active (not register page)
+        navLinks: {
+            'Login': true,
+            'Register': false
+        }
     });
 });
 

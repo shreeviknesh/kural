@@ -34,7 +34,11 @@ const db = mongoose.connection;
 //Defining the Routes
 kural.get('/', (req, res) => {
 	res.render('main', {
-		title: 'Welcome to Kural'
+		title: 'Welcome to Kural',
+		navLinks: {
+			'Login': false,
+			'Register': false
+		}
 	});
 });
 

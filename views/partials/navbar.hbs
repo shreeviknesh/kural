@@ -5,8 +5,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbar">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link {{#if loginActive}} active {{/if}}" href="/login">Login <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link {{#if registerActive}} active {{/if}}" href="/register">Register</a>
+      {{#each navLinks}}
+        <a class="nav-item nav-link {{#if this}} active {{/if}}" href="/{{@key}}">{{@key}}</a>
+      {{/each}}
     </div>
   </div>
 </nav>
