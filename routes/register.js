@@ -1,69 +1,48 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/user.js');
+let navLinks = {
+    'Login': {
+        'current': false,
+        'url': "login"
+    },
+    'Public': {
+        'url': "register/public"
+    },
+    'Government': {
+        'url': "register/government"
+    }
+};
 
 router.get('/', (req, res) => {
+    navLinks.Public.current = false;
+    navLinks.Government.current = false;
     res.render('register', {
         title: 'Register to Kural',
-        navLinks: {
-            'Login': {
-                'current': false,
-                'url': "login"
-            },
-            'Public': {
-                'current': false,
-                'url': "register/public"
-            },
-            'Government': {
-                'current': false,
-                'url': "register/government"
-            }
-        }
+        navLinks: navLinks
     });
 });
 
 router.get('/public', (req, res) => {
+    navLinks.Public.current = true;
+    navLinks.Government.current = false;
     res.render('register/public', {
         title: 'Public Registration',
-        navLinks: {
-            'Login': {
-                'current': false,
-                'url': "login"
-            },
-            'Public': {
-                'current': true,
-                'url': "register/public"
-            },
-            'Government': {
-                'current': false,
-                'url': "register/government"
-            }
-        }
+        navLinks: navLinks
     });
 });
 
 router.get('/government', (req, res) => {
+    navLinks.Public.current = false;
+    navLinks.Government.current = true;
     res.render('register/government', {
         title: 'Government Registration',
-        navLinks: {
-        'Login': {
-            'current': false,
-            'url': "login"
-            },
-            'Public': {
-                'current': false,
-                'url': "register/public"
-            },
-            'Government': {
-                'current': true,
-                'url': "register/government"
-                }
-        }
+        navLinks: navLinks
     });
 });
 
-router.post('', (req, res) => {
+const User = require('../models/user.js');
+router.post('/public', (req, res) => {
     const userid = req.body.userid;
     const email = req.body.email;
     const door = req.body.door;

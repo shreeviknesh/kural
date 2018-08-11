@@ -1,7 +1,7 @@
 <div  class="container">
     <div class="page-title text-center">Government Registeration</div>
     <hr/>
-    <form action="" method="post">
+    <form action="/register/government" method="post">
         <div class="form-group">
             <label for="userid">Identification Number</label>
             <input type="number" id="userid" name="userid" class="form-control" placeholder="Identification Number" autofocus>
@@ -12,8 +12,8 @@
             <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
         </div>
         <div class="form-group">
-            <label for="text">Designation</label>
-            <input type="number" id="desig" name="desig" class="form-control" placeholder="Designation" autofocus>
+            <label for="desig">Designation</label>
+            <input type="text" id="desig" name="desig" class="form-control" placeholder="Designation" autofocus>
             <small id="emailHelp" class="form-text text-muted">Enter your ______________.</small>
         </div>
         <label for="Area">Representing Area</label>
@@ -43,7 +43,7 @@
         </div>
         <div class="form-group">
             <label for="Superior">Identification Number Of Superior</label>
-            <input type="text" id="Superior" name="Superior" class="form-control" placeholder="Identification Number Of Superior" autofocus>
+            <input type="number" id="Superior" name="Superior" class="form-control" placeholder="Identification Number Of Superior" autofocus>
         </div>
         <div class="form-group">
             <label for="password1">Password</label>
@@ -65,3 +65,4 @@
 
 <script src="/js/states-cities-list.js"></script>
 <script src="/js/states-cities.js"></script>
+<script src="/js/validate.js"></script>

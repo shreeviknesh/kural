@@ -5,32 +5,39 @@ const validate = () => {
     //Traversing through all the select elements and checking if a value has been selected or not
     $("select").each(function() {
         var element = $(this);
-        if (element.val() == "default") {
+        if (element.val() == 'default') {
             isValid = false;
             element.addClass('is-invalid');
             errorMsg = 'These field(s) cannot be empty';
+        }
+        else {
+            element.removeClass('is-invalid');
         }
     });
 
     //Traversing through all the input elements and checking if they're empty
     $("input").each(function() {
         var element = $(this);
-        if (element.val() == "") {
+        if (element.val() == '') {
             isValid = false;
             element.addClass('is-invalid');
             errorMsg = 'These field(s) cannot be empty';
         }
+        else {
+            element.removeClass('is-invalid');
+        }
     });
-
-    if($("#password1").val() != $("#password2").val()) {
-        $("#password1").addClass('is-invalid');
-        $("#password2").addClass('is-invalid');
-        errorMsg = 'Passwords don\'t match';
-    } else {
-        $("#password1").removeClass('is-invalid');
-        $("#password2").removeClass('is-invalid');
+    if(isValid) {
+        if($("#password1").val() != $("#password2").val()) {
+            $("#password1").addClass('is-invalid');
+            $("#password2").addClass('is-invalid');
+            errorMsg = 'Passwords don\'t match';
+            isValid = false;
+        } else {
+            $("#password1").removeClass('is-invalid');
+            $("#password2").removeClass('is-invalid');
+        }
     }
-
     //Show the error alert box if any of the fields are empty/default
     if(isValid) {
         $('#errorMsg').hide();

@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
+let navLinks = {
+    'Login': {
+        current: true,
+        'url': 'login'
+    },
+    'Register': {
+        current: false,
+        'url': 'register'
+    }
+};
+let title = 'Login to Kural';
+
 router.get('/', (req, res) => {
     res.render('login', {
-        title: 'Login to Kural',
-        navLinks: {
-            'Login': {
-                'current': true,
-                'url': 'login'
-            },
-            'Register': {
-                'current': false,
-                'url': 'register'
-            }
-        }
+        title: title,
+        navLinks: navLinks
     });
 });
 
@@ -34,18 +37,9 @@ router.post('', (req, res) => {
                 if(!isMatch) {
                     res.render('login', {
                         invalidAuthenticate: true,
-                        errorMsg: 'Incorrect Password',
-                        title: 'Login to Kural',
-                        navLinks: {
-                            'Login': {
-                                'current': true,
-                                'url': 'login'
-                            },
-                            'Register': {
-                                'current': false,
-                                'url': 'register'
-                            }
-                        }
+                        errMsg: 'Incorrect Password',
+                        title: title,
+                        navLinks: navLinks
                     });
                 } else {
                     res.send('Logged In');
@@ -54,18 +48,9 @@ router.post('', (req, res) => {
         } else {
             res.render('login', {
                 invalidAuthenticate: true,
-                errorMsg: 'Incorrect Username',
-                title: 'Login to Kural',
-                navLinks: {
-                    'Login': {
-                        'current': true,
-                        'url': 'login'
-                    },
-                    'Register': {
-                        'current': false,
-                        'url': 'register'
-                    }
-                }
+                errMsg: 'Invalid Username',
+                title: title,
+                navLinks: navLinks
             });
         }
     })
