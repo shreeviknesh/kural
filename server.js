@@ -1,14 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const expressHandlebars = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const kural = express();
+
+//Importing the routes
+const indexRoute = require('./routes/index.js');
+const loginRoute = require('./routes/login');
+const registerRoute = require('./routes/register');
 
 //Static Folders
 kural.use(express.static('src'));
 kural.use(express.static('vendor'));
 
 //Templating Engine
-const exphbs = require('express-handlebars').create({
+const exphbs = expressHandlebars.create({
 	extname: '.hbs',
 	defaultLayout: 'layout.hbs',
 	partialsDir: 'views/partials',
@@ -20,7 +27,6 @@ kural.engine('hbs', exphbs.engine);
 kural.set('view engine', 'hbs');
 
 //Body Parser Middleware
-const bodyParser = require('body-parser');
 kural.use(bodyParser.json());
 kural.use(bodyParser.urlencoded({extended: false}));
 
@@ -29,16 +35,10 @@ const { mongoURI } = require('./config/keys');
 mongoose.connect(mongoURI, { useNewUrlParser: true })
     .then( () => console.log("MongoDB connected"))
     .catch( err => console.log(err));
-const db = mongoose.connection;
 
 //Defining the Routes
-const indexRoute = require('./routes/index.js');
 kural.use('/', indexRoute);
-
-const loginRoute = require('./routes/login');
 kural.use('/login', loginRoute);
-
-const registerRoute = require('./routes/register');
 kural.use('/register', registerRoute);
 
 //Listen to port
