@@ -7,7 +7,7 @@
     "start": "node server.js",
     "server": "nodemon server.js"
   },
-  "author": "Arjun CR & Shreeviknesh S",
+  "author": "Shreeviknesh S & Arjun CR",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
