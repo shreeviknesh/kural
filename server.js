@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const kural = express();
 
@@ -29,6 +30,14 @@ kural.set('view engine', 'hbs');
 //Body Parser Middleware
 kural.use(bodyParser.json());
 kural.use(bodyParser.urlencoded({extended: false}));
+
+//Express Session (Cookie) Middleware
+kural.use(session({
+	secret: 'very secure secret',
+	resave: false,
+	saveUninitialized: false,
+	cookie: { secure: true }
+}));
 
 //Connecting to MongoDB
 const { mongoURI } = require('./config/keys');
