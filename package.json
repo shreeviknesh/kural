@@ -8,6 +8,11 @@
     "server": "nodemon server.js"
   },
   "author": "Shreeviknesh S & Arjun CR",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shreeviknesh/kural.git",
+    "private": true
+  },
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
