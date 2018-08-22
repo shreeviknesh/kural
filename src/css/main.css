@@ -7,24 +7,12 @@ input[type=number]::-webkit-outer-spin-button {
 	--blendColor: rgba(224, 224, 255, 0.85);
 }
 body {
-    background: url("../img/currency.jpg");
+	font-family: Raleway, sans-serif;
+    background: url("../img/abstract.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
-}
-.navbar-brand {
-	padding-left: 2em;
-}
-.navbar-nav {
-	padding-right: 2em;
-}
-.nav-link.active {
-	border-bottom: 0.05em solid black;
-}
-.navbar {
-	height: 3em;
-	background-color: var(--blendColor);
 }
 .container {
 	margin-top: 3em;
@@ -50,10 +38,4 @@ hr {
 }
 .required-input {
 	color: red;
-}
-
-@media(max-width: 575px) {
-	.container {
-		width: 100vw;
-	}
 }

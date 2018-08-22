@@ -64,6 +64,7 @@ router.post('/public', (req, res) => {
         if(err) throw err;
         console.log(user);
     });
+
     res.send('Registered Successfully');
 });
 

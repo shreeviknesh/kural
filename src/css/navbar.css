@@ -1,0 +1,13 @@
+.navbar {
+	height: 3em;
+	background-color: var(--blendColor);
+}
+.navbar-brand {
+	padding-left: 2em;
+}
+.navbar-nav {
+	padding-right: 2em;
+}
+.nav-link.active {
+	border-bottom: 0.05em solid black;
+}

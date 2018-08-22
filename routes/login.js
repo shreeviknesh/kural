@@ -56,4 +56,33 @@ router.post('', (req, res) => {
     })
 });
 
+//Password Reset
+router.get('/reset', (req, res) => {
+    res.render('password-reset', {
+        navLinks: navLinks
+    });
+});
+
+router.post('/reset', (req,res) => {
+     User.findUser(req.body.userid, (err, user) => {
+        if(err) throw err;
+
+        if(user) {
+            let mail = require ('./mail.js');
+            var otp = mail(user.email);
+            res.render('login', {
+                misc: true,
+                miscMsg: "Please enter the OTP sent in the registered email ID as password to login, do not forget to change your password after logging in.",
+                navLinks: navLinks
+            });
+        } else {
+            res.render('password-reset', {
+                error: true,
+                errMsg: "Unable to find Identification number",
+                navLinks: navLinks
+            });
+        }
+    });
+});
+
 module.exports = router;
