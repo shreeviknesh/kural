@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const passport = require('./config/passport.js');
+const flash = require('connect-flash');
 
 const kural = express();
 
@@ -36,8 +38,22 @@ kural.use(session({
 	secret: 'very secure secret',
 	resave: false,
 	saveUninitialized: false,
-	cookie: { secure: true }
+	cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
+
+//Passport Initialization
+kural.use(passport.initialize());
+kural.use(passport.session());
+
+//Connect Flash Middleware
+kural.use(flash());
+kural.use((req, res, next) => {
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	res.locals.user = req.user || null;
+	next();
+});
 
 //Connecting to MongoDB
 const { mongoURI } = require('./config/keys');

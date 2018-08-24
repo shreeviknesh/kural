@@ -1,5 +1,5 @@
 var nodemailer = require('nodemailer');
-var otp = Math.floor(Math.random() * 89999) + 10000;
+var temporaryPassword = require('uuid/v4')();
 
 module.exports = sendMail = email => {
   var transporter = nodemailer.createTransport({
@@ -14,16 +14,13 @@ module.exports = sendMail = email => {
     from: 'Kural',
     to: email,
     subject: 'Password reset request for Kural account',
-    text: `Please use the following Password to login: ${otp}.`;
+    text: `Please use the following Password to login: ${temporaryPassword}.`
   };
 
   transporter.sendMail(options, (err, info) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(`Email sent: ${info.response}`);
-    }
+    if (err) throw(err);
+    console.log(`Email sent: ${info.response}`);
   });
 
-  return otp;
+  return temporaryPassword;
 }

@@ -2,21 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('register/register', {
-        title: 'Register to Kural'
-    });
+    res.render('register/register');
 });
 
 router.get('/public', (req, res) => {
-    res.render('register/public', {
-        title: 'Public Registration'
-    });
+    res.render('register/public');
 });
 
 router.get('/government', (req, res) => {
-    res.render('register/government', {
-        title: 'Government Registration'
-    });
+    res.render('register/government');
 });
 
 const User = require('../models/user.js');
@@ -43,7 +37,8 @@ router.post('/public', (req, res) => {
         console.log(user);
     });
 
-    res.send('Registered Successfully');
+    req.flash('success_msg', 'Registered Successfully');
+    res.redirect('/login');
 });
 
 module.exports = router;

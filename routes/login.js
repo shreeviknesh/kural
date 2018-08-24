@@ -1,47 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const User = require('../models/user');
 
 let title = 'Login to Kural';
 
 router.get('/', (req, res) => {
-    res.render('login/login', {
-        title: title
+    res.render('login/login');
+});
+
+router.post('/',
+    passport.authenticate('local', {
+        failureRedirect: '/login',
+        failureFlash: true
+    }), (req, res) => {
+        res.redirect('/');
     });
-});
-
-const User = require('../models/user');
-router.post('/', (req, res) => {
-    const userid = req.body.userid;
-    const password = req.body.password;
-
-    User.findUser(userid, (err, user) => {
-        if(err)
-            throw err;
-
-        if(user) {
-            User.comparePassword(password, user.password, (err, isMatch) => {
-                if(err)
-                    throw err;
-
-                if(!isMatch) {
-                    res.render('login/login', {
-                        invalidAuthenticate: true,
-                        errMsg: 'Incorrect Password',
-                        title: title
-                    });
-                } else {
-                    res.send('Logged In');
-                }
-            })
-        } else {
-            res.render('login/login', {
-                invalidAuthenticate: true,
-                errMsg: 'Invalid Username',
-                title: title
-            });
-        }
-    })
-});
 
 //Password Reset
 router.get('/reset', (req, res) => {
@@ -53,17 +27,12 @@ router.post('/reset', (req,res) => {
         if(err) throw err;
 
         if(user) {
-            let mail = require ('./mail.js');
-            var otp = mail(user.email);
-            res.render('login', {
-                misc: true,
-                miscMsg: "Please enter the OTP sent in the registered email ID as password to login, do not forget to change your password after logging in."
-            });
+            const temporaryPassword = require('../config/mail.js')(user.email);
+            req.flash('success_msg', 'Please enter the password sent in the registered email ID as password to login, do not forget to change your password after logging in.');
+            res.redirect('/login');
         } else {
-            res.render('login/reset', {
-                error: true,
-                errMsg: "Unable to find Identification number"
-            });
+            req.flash('error_msg', 'Unable to find User.')
+            res.redirect('/login/reset');
         }
     });
 });
