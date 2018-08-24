@@ -1,27 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-let navLinks = {
-    'Login': {
-        current: true,
-        'url': 'login'
-    },
-    'Register': {
-        current: false,
-        'url': 'register'
-    }
-};
 let title = 'Login to Kural';
 
 router.get('/', (req, res) => {
-    res.render('login', {
-        title: title,
-        navLinks: navLinks
+    res.render('login/login', {
+        title: title
     });
 });
 
 const User = require('../models/user');
-router.post('', (req, res) => {
+router.post('/', (req, res) => {
     const userid = req.body.userid;
     const password = req.body.password;
 
@@ -35,22 +24,20 @@ router.post('', (req, res) => {
                     throw err;
 
                 if(!isMatch) {
-                    res.render('login', {
+                    res.render('login/login', {
                         invalidAuthenticate: true,
                         errMsg: 'Incorrect Password',
-                        title: title,
-                        navLinks: navLinks
+                        title: title
                     });
                 } else {
                     res.send('Logged In');
                 }
             })
         } else {
-            res.render('login', {
+            res.render('login/login', {
                 invalidAuthenticate: true,
                 errMsg: 'Invalid Username',
-                title: title,
-                navLinks: navLinks
+                title: title
             });
         }
     })
@@ -58,9 +45,7 @@ router.post('', (req, res) => {
 
 //Password Reset
 router.get('/reset', (req, res) => {
-    res.render('password-reset', {
-        navLinks: navLinks
-    });
+    res.render('login/reset');
 });
 
 router.post('/reset', (req,res) => {
@@ -72,14 +57,12 @@ router.post('/reset', (req,res) => {
             var otp = mail(user.email);
             res.render('login', {
                 misc: true,
-                miscMsg: "Please enter the OTP sent in the registered email ID as password to login, do not forget to change your password after logging in.",
-                navLinks: navLinks
+                miscMsg: "Please enter the OTP sent in the registered email ID as password to login, do not forget to change your password after logging in."
             });
         } else {
-            res.render('password-reset', {
+            res.render('login/reset', {
                 error: true,
-                errMsg: "Unable to find Identification number",
-                navLinks: navLinks
+                errMsg: "Unable to find Identification number"
             });
         }
     });

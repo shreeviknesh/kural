@@ -1,43 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-let navLinks = {
-    'Login': {
-        'current': false,
-        'url': "login"
-    },
-    'Public': {
-        'url': "register/public"
-    },
-    'Government': {
-        'url': "register/government"
-    }
-};
-
 router.get('/', (req, res) => {
-    navLinks.Public.current = false;
-    navLinks.Government.current = false;
-    res.render('register', {
-        title: 'Register to Kural',
-        navLinks: navLinks
+    res.render('register/register', {
+        title: 'Register to Kural'
     });
 });
 
 router.get('/public', (req, res) => {
-    navLinks.Public.current = true;
-    navLinks.Government.current = false;
     res.render('register/public', {
-        title: 'Public Registration',
-        navLinks: navLinks
+        title: 'Public Registration'
     });
 });
 
 router.get('/government', (req, res) => {
-    navLinks.Public.current = false;
-    navLinks.Government.current = true;
     res.render('register/government', {
-        title: 'Government Registration',
-        navLinks: navLinks
+        title: 'Government Registration'
     });
 });
 

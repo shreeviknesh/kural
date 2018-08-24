@@ -12,13 +12,13 @@ const loginRoute = require('./routes/login');
 const registerRoute = require('./routes/register');
 
 //Static Folders
-kural.use(express.static('src'));
-kural.use(express.static('vendor'));
+kural.use(express.static(__dirname + '/src'));
+kural.use(express.static(__dirname + '/vendor'));
 
 //Templating Engine
 const exphbs = expressHandlebars.create({
 	extname: '.hbs',
-	defaultLayout: 'layout.hbs',
+	defaultLayout: 'outerLayout.hbs',
 	partialsDir: 'views/partials',
 	layoutsDir: 'views/layouts/'
 });

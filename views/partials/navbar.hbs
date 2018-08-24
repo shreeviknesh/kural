@@ -5,11 +5,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbar">
     <div class="navbar-nav ml-auto">
-      {{#each navLinks}}
-        <a class="nav-item nav-link {{#if this.[current]}} active {{/if}}" href="/{{this.[url]}}">
-          {{@key}}
-        </a>
-      {{/each}}
+      {{#if user}}
+        <a class="nav-item nav-link" href="/profile">Profile</a>
+        <a class="nav-item nav-link" href="/profile">Logout</a>
+      {{else}}
+        <a class="nav-item nav-link" href="/login">Login</a>
+        <a class="nav-item nav-link" href="/register">Register</a>
+      {{/if}}
     </div>
   </div>
 </nav>

@@ -2,18 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+	let user = false;
+	let layout = user ? 'innerLayout.hbs' : 'outerLayout.hbs';
     res.render('main', {
-        title: 'Welcome to Kural',
-        navLinks: {
-            'Login': {
-                'current': false,
-                'url': "login"
-                },
-            'Register': {
-                    'current': false,
-                    'url': "register"
-                }
-        }
+    	user: user,
+    	layout: layout,
+        title: 'Welcome to Kural'
     });
 });
 

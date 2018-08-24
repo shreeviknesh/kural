@@ -1,10 +1,27 @@
-<div class="container text-center">
-	<div class="page-title">Welcome to Kural</div>
-	<hr>
-	Kural is an initiative to bridge the gap between public and government.
-	<hr>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse a ut harum, soluta quaerat velit facilis officiis eveniet sit doloremque odit autem distinctio reiciendis commodi vitae nulla incidunt vel repellendus, nostrum, alias explicabo suscipit. Consectetur eum, nihil quia hic neque ipsa eius sed quod quis. Placeat quas dolore id, voluptates.
-	<hr>
-	<a href="/login" class="btn btn-success">Login</a>
-	<a href="/register" class="btn btn-primary">Join Kural</a>
-</div>
+{{#if user}}
+	<div class="main-container">
+		<div class="post-container">
+			<div class="post">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus rerum beatae corporis illum aliquid ut placeat, incidunt est maiores enim sapiente repellat in ab id dolorem velit porro illo minima obcaecati dicta sed ad, soluta! Impedit saepe atque nesciunt, eum necessitatibus. Earum enim ratione doloremque sapiente quam quisquam id, aliquam libero quae sit. Omnis molestiae magni, odit magnam iusto aliquid quam, eius molestias delectus doloremque officia et harum consectetur ratione hic quis quasi dolore quaerat fuga similique maxime quisquam nemo! Reiciendis dolores magnam deserunt consequuntur vitae voluptate quos, inventore laborum ea quasi error, ullam, temporibus tempora distinctio provident cum molestiae.
+			</div>
+		</div>
+
+		<div class="left sidebar">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab illo, impedit suscipit dolore? Officia aliquam iusto laborum architecto nam beatae quod odit veniam aperiam, nobis odio possimus tempore explicabo magnam illo nostrum. Maiores architecto quos corrupti iusto enim, cupiditate, quidem exercitationem, dolor voluptatem minus impedit magni voluptatum nesciunt accusantium consequuntur?
+		</div>
+		<div class="right sidebar">
+			RIGHT SIDEBAR
+		</div>
+	</div>
+{{else}}
+	<div class="container text-center">
+		<div class="page-title">Welcome to Kural</div>
+		<hr>
+		Kural is an initiative to bridge the gap between public and government.
+		<hr>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse a ut harum, soluta quaerat velit facilis officiis eveniet sit doloremque odit autem distinctio reiciendis commodi vitae nulla incidunt vel repellendus, nostrum, alias explicabo suscipit. Consectetur eum, nihil quia hic neque ipsa eius sed quod quis. Placeat quas dolore id, voluptates.
+		<hr>
+		<a href="/login" class="btn btn-success">Login</a>
+		<a href="/register" class="btn btn-primary">Join Kural</a>
+	</div>
+{{/if}}
