@@ -27,7 +27,7 @@ router.post('/post', (req, res) => {
 	res.redirect('/');
 
     } else {
-        req.flash('error_msg', 'Please login to continue.');
+        req.flash('error', 'Please login to continue.');
         res.redirect('/login');
     }
 });

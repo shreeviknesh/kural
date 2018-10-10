@@ -6,8 +6,8 @@
             <label for="userid">Please enter your registered Identification Number <span class="required-input">*</span> </label>
             <input type="number" id="userid" name="userid" class="form-control" placeholder="Identification Number" autofocus>
         </div>
-        {{#if error_msg}}
-            <div class="alert alert-danger">{{error_msg}}</div>
+        {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
         {{/if}}
         <div class="form-group text-center">
             <button type="submit" class="btn btn-outline-primary" onclick="return validate();">Submit</button>

@@ -37,7 +37,7 @@ router.post('/public', (req, res) => {
         console.log(user);
     });
 
-    req.flash('success_msg', 'Registered Successfully');
+    req.flash('success', 'Registered Successfully');
     res.redirect('/login');
 });
 

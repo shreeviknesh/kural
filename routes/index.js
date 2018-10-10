@@ -20,9 +20,9 @@ router.get('/',  (req, res) => {
 router.get('/logout', (req, res) => {
     if(req.isAuthenticated()) {
         req.logout();
-        req.flash('success_msg', 'Logged out successfully.');
+        req.flash('success', 'Logged out successfully.');
     } else {
-        req.flash('error_msg', 'Please login to continue.');
+        req.flash('error', 'Please login to continue.');
     }
     res.redirect('/login');
 });

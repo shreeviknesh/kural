@@ -7,7 +7,7 @@ router.get('/profile', (req, res) => {
             layout: 'innerLayout'
         });
     } else {
-        req.flash('error_msg', 'Please login to continue')
+        req.flash('error', 'Please login to continue')
         res.redirect('login');
     }
 

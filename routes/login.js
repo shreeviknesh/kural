@@ -28,10 +28,10 @@ router.post('/reset', (req,res) => {
 
         if(user) {
             const temporaryPassword = require('../config/mail.js')(user);
-            req.flash('success_msg', 'Please enter the password sent in the registered email ID as password to login, do not forget to change your password after logging in!');
+            req.flash('success', 'Please enter the password sent in the registered email ID as password to login, do not forget to change your password after logging in!');
             res.redirect('/login');
         } else {
-            req.flash('error_msg', 'Unable to find User.')
+            req.flash('error', 'Unable to find User.')
             res.redirect('/login/reset');
         }
     });

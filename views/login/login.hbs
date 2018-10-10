@@ -2,8 +2,8 @@
     <div class="page-title text-center">Login</div>
     <hr/>
     <form action="" method="post">
-         {{#if success_msg}}
-           <div class="alert alert-success">{{success_msg}}</div>
+         {{#if success}}
+           <div class="alert alert-success">{{success}}</div>
         {{/if}}
         <div class="form-group">
             <label for="userid">Identification Number <span class="required-input">*</span> </label>
@@ -19,13 +19,11 @@
                 Please enter your password.
             </div>
         </div>
-        {{#if error_msg}}
-            <div class="alert alert-danger">{{error_msg}}</div>
-        {{/if}}
 
         {{#if error}}
             <div class="alert alert-danger">{{error}}</div>
         {{/if}}
+
         <div class="form-group">
             <div class="form-row">
                 <a href="/login/reset" id="forgotPassword" class="link">Forgot Password?</a>
