@@ -9,9 +9,11 @@ const flash = require('connect-flash');
 const kural = express();
 
 //Importing the routes
-const indexRoute = require('./routes/index.js');
+const indexRoute = require('./routes/index');
 const loginRoute = require('./routes/login');
 const registerRoute = require('./routes/register');
+const profileRoute = require('./routes/profile');
+const postRoute = require('./routes/post');
 
 //Static Folders
 kural.use(express.static(__dirname + '/src'));
@@ -28,7 +30,6 @@ const exphbs = expressHandlebars.create({
 kural.set('views', __dirname + '\\views');
 kural.engine('hbs', exphbs.engine);
 kural.set('view engine', 'hbs');
-
 //Body Parser Middleware
 kural.use(bodyParser.json());
 kural.use(bodyParser.urlencoded({extended: false}));
@@ -36,8 +37,8 @@ kural.use(bodyParser.urlencoded({extended: false}));
 //Express Session (Cookie) Middleware
 kural.use(session({
 	secret: 'very secure secret',
-	resave: false,
-	saveUninitialized: false,
+	resave: true,
+	saveUninitialized: true,
 	cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
 
@@ -62,12 +63,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true })
     .catch( err => console.log(err));
 
 //Defining the Routes
-kural.use('/', indexRoute);
+kural.use('/', indexRoute, profileRoute, postRoute);
 kural.use('/login', loginRoute);
 kural.use('/register', registerRoute);
 
 //Listen to port
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 80;
 kural.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });

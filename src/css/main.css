@@ -11,8 +11,37 @@ input[type=number]::-webkit-outer-spin-button {
 body {
 	font-family: Raleway, sans-serif;
     background: url("../img/abstract.jpg");
+
+	/* background: -webkit-linear-gradient(left, 
+		rgba(255, 0, 128, 0.5), 
+		rgba(255, 140, 0, 0.5), 
+		rgba(64, 224, 208, 0.5)), 
+	url("../img/bg-pattern.png");
+	background: -o-linear-gradient(left, 
+		rgba(255, 0, 128, 0.5), 
+		rgba(255, 140, 0, 0.5), 
+		rgba(64, 224, 208, 0.5)), 
+	url("../img/bg-pattern.png");
+	background: linear-gradient(left, 
+		rgba(255, 0, 128, 0.5), 
+		rgba(255, 140, 0, 0.5), 
+		rgba(64, 224, 208, 0.5)), 
+	url("../img/bg-pattern.png");  
+	*/
+
+
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
+}
+
+a {
+    color: #eee1b8;
+    text-decoration: none;
+}
+a:hover,a:focus {
+    color: #eee1b8;
+    text-decoration: none;
+    text-size: 20%;
 }

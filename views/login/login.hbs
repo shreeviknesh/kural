@@ -1,28 +1,31 @@
 <div class="col-lg-4 col-md-4 col-sm-8 container">
     <div class="page-title text-center">Login</div>
     <hr/>
-
-    {{#if success_msg}}
-       <div class="alert alert-success">{{success_msg}}</div>
-    {{/if}}
-
-    {{#if error_msg}}
-        <div class="alert alert-danger">{{error_msg}}</div>
-    {{/if}}
-
-    {{#if error}}
-        <div class="alert alert-danger">{{error}}</div>
-    {{/if}}
-
     <form action="" method="post">
+         {{#if success_msg}}
+           <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}}
         <div class="form-group">
             <label for="userid">Identification Number <span class="required-input">*</span> </label>
             <input type="number" id="userid" name="userid" class="form-control" placeholder="Identification Number" autofocus>
+             <div class="invalid-feedback">
+                Please enter your username.
+            </div>
         </div>
         <div class="form-group">
             <label for="password">Password <span class="required-input">*</span> </label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            <div class="invalid-feedback">
+                Please enter your password.
+            </div>
         </div>
+        {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}}
+
+        {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
         <div class="form-group">
             <div class="form-row">
                 <a href="/login/reset" id="forgotPassword" class="link">Forgot Password?</a>

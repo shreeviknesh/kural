@@ -1,19 +1,40 @@
 <div class="main-container">
-	<div class="post-container">
-		<div class="post">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus rerum beatae corporis illum aliquid ut placeat, incidunt est maiores enim sapiente repellat in ab id dolorem velit porro illo minima obcaecati dicta sed ad, soluta! Impedit saepe atque nesciunt, eum necessitatibus. Earum enim ratione doloremque sapiente quam quisquam id, aliquam libero quae sit. Omnis molestiae magni, odit magnam iusto aliquid quam, eius molestias delectus doloremque officia et harum consectetur ratione hic quis quasi dolore quaerat fuga similique maxime quisquam nemo! Reiciendis dolores magnam deserunt consequuntur vitae voluptate quos, inventore laborum ea quasi error, ullam, temporibus tempora distinctio provident cum molestiae.
-		</div>
+	<div class="post-container" id="postContainer">
+		<form action="/post" method="post">
+			<div class="form-group">
+				<label for="newPost">Raise a new issue-</label>
+				<textarea class="form-control col-md-10" id="newPost" rows="3" name="postContent" placeholder="Describe your issue here in less than 200 words"></textarea>
+			</div>
+			<div class="form-group text-center">
+            	<button type="submit" class="btn btn-primary" onclick="return validate();">Submit</button>
+        	</div>
+		</form>
+		<hr>
+		{{#each posts}}
+			<div class="post">
+				{{this.content}}
+			</div>
+		{{/each}}
 	</div>
-
 	<div class="left sidebar">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab illo, impedit suscipit dolore? Officia aliquam iusto laborum architecto nam beatae quod odit veniam aperiam, nobis odio possimus tempore explicabo magnam illo nostrum. Maiores architecto quos corrupti iusto enim, cupiditate, quidem exercitationem, dolor voluptatem minus impedit magni voluptatum nesciunt accusantium consequuntur?
-	</div>
-	<div class="right sidebar">
-		RIGHT SIDEBAR
+		<h4 style="color:#ffffff">INFO BAR</h4>
+		<a href="/compRaised">Complaints Raised</a>
+		<a href="/compResolved">Complaints Resolved</a>
+		<a href="/compStatus">Complaint Status</a>
 	</div>
 </div>
+<script>
+	function validate() {
+		const textarea = $('#newPost');
+		const content = textarea.val();
 
-<!-- Custom Page Title -->
-<script type="text/javascript">
-    document.title = "Dashboard";
+		if(content == '') {
+			textarea.addClass('is-invalid');
+			return false;
+		}
+		else {
+			textarea.removeClass('is-invalid');
+			return true;
+		}
+	}
 </script>
